@@ -22,7 +22,7 @@ exports.signup = async(req, res) => {
 
     const secureUserInfo=sanitizeUser(newUser)
 
-    const token=jwt.sign(secureUserInfo,process.env.SECRET_KEY,{expiresIn:'3hr'})
+    const token=jwt.sign(secureUserInfo,'akljf7489fj893jf893jf893jk-2-2929j80j*!()&*!(&#)',{expiresIn:'3hr'})
     res.cookie('token',token,{
         httpOnly:true,
         sameSite:'Lax',
@@ -63,7 +63,7 @@ exports.login = async (req, res) => {
 
       const secureUserInfo=sanitizeUser(existingUser)
 
-      const token=jwt.sign(secureUserInfo,process.env.SECRET_KEY,{expiresIn:'3hr'})
+      const token=jwt.sign(secureUserInfo,'akljf7489fj893jf893jf893jk-2-2929j80j*!()&*!(&#)',{expiresIn:'3hr'})
       res.cookie('token',token,{
           httpOnly:true,
           sameSite:'Lax',

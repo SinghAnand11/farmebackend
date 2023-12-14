@@ -17,7 +17,7 @@ const dotenv=require('dotenv').config({path:'.env'});
 connectDb()
 // middleware
 server.use(express.json({ limit: '10mb' }));
-server.use(cors({origin:"http://localhost:3000",credentials:true}));
+server.use(cors());
 server.use(cookieParser())
 server.use(morgan("tiny"))
 

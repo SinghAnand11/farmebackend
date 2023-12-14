@@ -40,6 +40,6 @@ app.get("*",(req,res)=>{
     res.sendFile(path.resolve(__dirname,"frontend","build","index.html"))
 });
 
-server.listen(8000,()=>{
+server.listen(8000,process.env.HOST,()=>{
     console.log('server [STARTED] ~ http://localhost:8000')
 });

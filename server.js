@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const { connectTodB } = require("./database/db");
+const { connectDb } = require("./database/db");
 const cookieParser=require('cookie-parser')
 const morgan=require("morgan")
 const server = express();
@@ -10,10 +10,11 @@ const userRoutes=require("./routes/User")
 const cartRoutes=require("./routes/Cart")
 const path = require('path')
 
+const dotenv=require('dotenv').config({path:'.env'});
+
 
 // databse connection
-connectTodB()
-
+connectDb()
 // middleware
 server.use(express.json({ limit: '10mb' }));
 server.use(cors({origin:"http://localhost:3000",credentials:true}));
@@ -32,12 +33,6 @@ server.use("/cart",cartRoutes)
 
 server.get("/", (req, res) => {
     res.status(200).json({'message':"running"});
-});
-
-//production script
-app.use(express.static("./frontend/build"));
-app.get("*",(req,res)=>{
-    res.sendFile(path.resolve(__dirname,"frontend","build","index.html"))
 });
 
 server.listen(8000,process.env.HOST,()=>{
